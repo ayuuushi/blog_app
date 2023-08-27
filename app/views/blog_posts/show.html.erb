@@ -22,5 +22,6 @@
   </p>
 <% end %>
 
+<%= button_to 'Delete', blog_post_path(@blog_post), method: :delete, data: { confirm: 'Are you sure you want to log out?' } %> |
 <%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
 <%= link_to 'Back', blog_posts_path %>
