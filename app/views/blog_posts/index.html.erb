@@ -18,6 +18,10 @@
         <source src="<%= blog_post.video.url %>" type="video/mp4">
       </video>
     <% end %>
-    <p>Posted by <%= image_tag blog_post&.user&.avatar&.url , width: "3%", class: "round-image" %> <%= blog_post.user.email %> on <%= blog_post.created_at.strftime("%B %d, %Y") %></p>
+    <% if blog_post.user.avatar? %>
+      <p>Posted by <%= image_tag blog_post&.user&.avatar&.url , width: "3%", class: "round-image" %> <%= blog_post.user.email %> on <%= blog_post.created_at.strftime("%B %d, %Y") %></p>
+    <% else %>
+      <p>Posted by <%= blog_post.user.email %> on <%= blog_post.created_at.strftime("%B %d, %Y") %></p>
+    <% end %>
 <% end %>
 
