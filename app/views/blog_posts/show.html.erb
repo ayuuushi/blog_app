@@ -1,0 +1,26 @@
+<p>
+  <strong>Title:</strong>
+  <%= @blog_post.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @blog_post.description %>
+</p>
+
+<% if @blog_post.image.present? %>
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag @blog_post.image.url %>
+  </p>
+<% end %>
+
+<% if @blog_post.video.present? %>
+  <p>
+    <strong>Video:</strong>
+    <%= video_tag @blog_post.video.url %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
+<%= link_to 'Back', blog_posts_path %>

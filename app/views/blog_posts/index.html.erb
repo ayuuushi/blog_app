@@ -1,0 +1,23 @@
+<style>
+  .round-image {
+    border-radius: 50%;
+  }
+</style>
+
+<h1>Blog Posts</h1>
+
+<%= link_to 'Create New Blog Post', new_blog_post_path %>
+
+<% @blog_posts.each do |blog_post| %>
+  <h2><%= link_to blog_post.title, blog_post %></h2>
+  <% if blog_post.image? %>
+      <%= image_tag blog_post.image.url , width: "20%"%>
+    <% end %>
+    <% if blog_post.video? %>
+      <video width="320" height="240" controls>
+        <source src="<%= blog_post.video.url %>" type="video/mp4">
+      </video>
+    <% end %>
+    <p>Posted by <%= image_tag blog_post&.user&.avatar&.url , width: "3%", class: "round-image" %> <%= blog_post.user.email %> on <%= blog_post.created_at.strftime("%B %d, %Y") %></p>
+<% end %>
+
